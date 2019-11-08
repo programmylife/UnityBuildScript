@@ -12,7 +12,7 @@ public class BuildWindow : EditorWindow
     const string stagingURL = "https://stagingURL.com/";
     const string prodURL = "https://productionAPIURL.com/";
     const string appName = "NameOfApp";
-    const string buildPath = @"../../Builds/";
+    const string buildPath = @"../Builds/";
     string gitHash = null;
 
     const string readmeMacWebFileName = "READ_ME_-_Mac.txt";
@@ -196,7 +196,8 @@ public class BuildWindow : EditorWindow
 
     void BuildGame(string appPath, string fileName, string readmeFileName, string[] curLevels, BuildTarget buildTarget)
     {
-        BuildPipeline.BuildPlayer(curLevels, fileName, buildTarget, buildOptions);
+        var lab = BuildPipeline.BuildPlayer(curLevels, fileName, buildTarget, buildOptions);
+        Debug.Log(lab);
         //copy the readme file
         FileUtil.CopyFileOrDirectory(Application.dataPath + @"/README/" + readmeFileName, appPath + @"/" + readmeFileName);
     }
